@@ -1,0 +1,14 @@
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace spark "library://ns.adobe.com/flex/spark";
+@namespace mxskins "mx.skins.spark.*";
+@namespace sparkskins "spark.skins.spark.*";
+
+spark|Application {
+    background-color:#000000;
+    color: #FFFFFF;
+    fontFamily: Arial;
+    fontSize: 10px;
+}
+spark|Label {
+    color: #FFFFFF;
+}

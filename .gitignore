@@ -1,0 +1,24 @@
+#################
+## Excludes
+#################
+
+# Directories
+doc/
+build/
+bin/
+bin-debug/
+target/
+publish/
+.gradle/
+assets/
+temp/
+
+# Auto-generated Files
+
+# JavaCompiler
+MANIFEST.MF
+
+# FlexUnit
+FlexUnitApplication.as
+FlexUnitApplication.mxml
+FlexUnitCompilerApplication.as

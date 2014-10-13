@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *=BEGIN CLOSED LICENSE
+ *
+ * Copyright(c) 2012 András Csizmadia.
+ * http://www.vpmedia.eu
+ *
+ * For information about the licensing and copyright please 
+ * contact András Csizmadia at andras@vpmedia.eu.
+ *
+ *=END CLOSED LICENSE
+ */
+-->
+<mx:Application 
+    layout="absolute"
+    styleName="flexUnitApplication"
+    creationComplete="runTests();"
+    xmlns:mx="http://www.adobe.com/2006/mxml"
+    xmlns:flexUnitUIRunner="http://www.adobe.com/2009/flexUnitUIRunner">
+
+    <mx:Script>
+        <![CDATA[
+            //import mx.logging.LogEventLevel;
+            //import org.flexunit.internals.TextListener;
+            import org.flexunit.runner.notification.async.XMLListener;
+            import org.flexunit.internals.TraceListener;
+            import org.flexunit.listeners.CIListener;
+            import org.flexunit.listeners.UIListener;
+            import org.flexunit.runner.FlexUnitCore;
+
+            import hu.vpmedia.tests.AllTestSuit;
+
+            public function runTests():void
+            {
+                var core:FlexUnitCore = new FlexUnitCore();
+
+                core.addListener(new UIListener(uiListener));
+                core.addListener(new CIListener());
+                core.addListener(new XMLListener("FlexUnit4Turnkey")); // For FlashBuilder4
+                core.addListener(new TraceListener()); // For AS3 Projects
+                //core.addListener( TextListener.getDefaultTextListener( LogEventLevel.DEBUG ) ); // For Flex Projects
+
+                core.run(AllTestSuit); // comma separated
+            }
+        ]]>
+    </mx:Script>
+    <flexUnitUIRunner:TestRunnerBase id="uiListener"
+        width="100%" height="100%"/>
+
+</mx:Application>

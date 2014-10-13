@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  - =BEGIN CLOSED LICENSE
+  -
+  -  Copyright(c) 2014 Andras Csizmadia.
+  -  http://www.vpmedia.eu
+  -
+  -  For information about the licensing and copyright please
+  -  contact Andras Csizmadia at andras@vpmedia.eu.
+  -
+  -  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  -  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  -  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  -  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  -  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  -  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  -  THE SOFTWARE.
+  -
+  - =END CLOSED LICENSE
+  -->
+<!-- <s:WindowedApplication -->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               xmlns:model="vpmedia.model.*"
+               xmlns:view="vpmedia.view.*"
+               xmlns:controller="vpmedia.controller.*"
+               error="onError(event)"
+               preinitialize="onChange(event);"
+               initialize="onChange(event);"
+               creationComplete="onChange(event);"
+               applicationComplete="onChange(event);"
+               currentStateChange="onStateChange(event);"
+               currentState="init">
+
+    <fx:Style source="css/main.css"/>
+
+    <fx:Metadata>[ResourceBundle("i18n")]</fx:Metadata>
+
+    <fx:Metadata>
+	[Event(name="load",type="vpmedia.event.ApplicationEvent")]
+	[Event(name="init",type="vpmedia.event.ApplicationEvent")]
+	[Event(name="complete",type="vpmedia.event.ApplicationEvent")]
+	[Event(name="state_change",type="vpmedia.event.ApplicationEvent")]
+	[Event(name="error",type="vpmedia.event.ApplicationEvent")]
+	[Event(name="security_error",type="vpmedia.event.ApplicationEvent")]
+     </fx:Metadata>
+
+    <fx:Script>
+        <![CDATA[
+            import mx.events.FlexEvent;
+            import mx.events.StateChangeEvent;
+
+            import vpmedia.controller.ApplicationController;
+            import vpmedia.event.ApplicationEvent;
+            import vpmedia.model.ApplicationModel;
+
+            /**
+             * onChange
+             */
+            private function onChange(e:FlexEvent):void
+            {
+                trace(this, "onChange", e.type);
+
+                switch (e.type)
+                {
+                    case FlexEvent.PREINITIALIZE:
+                        break;
+                    case FlexEvent.INITIALIZE:
+                        break;
+                    case FlexEvent.CREATION_COMPLETE:
+                        break;
+                    case FlexEvent.APPLICATION_COMPLETE:
+                        systemManager.dispatchEvent(new ApplicationEvent(ApplicationEvent.INIT));
+                        break;
+                }
+            }
+
+            /**
+             * onError
+             */
+            private function onError(e:ErrorEvent):void
+            {
+                trace(this, "onError", e.text);
+
+                systemManager.dispatchEvent(new ApplicationEvent(ApplicationEvent.ERROR));
+            }
+
+            /**
+             * onStateChange
+             */
+            private function onStateChange(e:StateChangeEvent):void
+            {
+                trace(this, "onStateChange", e.oldState, e.newState);
+
+                systemManager.dispatchEvent(new ApplicationEvent(ApplicationEvent.STATE_CHANGE));
+            }
+        ]]>
+    </fx:Script>
+
+    <s:states>
+        <mx:State name="init">
+        </mx:State>
+        <mx:State name="main">
+        </mx:State>
+        <mx:State name="error">
+        </mx:State>
+    </s:states>
+    <s:layout.init>
+        <s:BasicLayout/>
+    </s:layout.init>
+
+    <fx:Declarations>
+        <model:ApplicationModel id="_model"/>
+    </fx:Declarations>
+    <controller:ApplicationController id="_controller"/>
+    <view:ApplicationView id="_view"/>
+
+</s:Application>
+<!-- </s:WindowedApplication> -->

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ *=BEGIN CLOSED LICENSE
+ *
+ * Copyright(c) 2013 András Csizmadia.
+ * http://www.vpmedia.eu
+ *
+ * For information about the licensing and copyright please 
+ * contact András Csizmadia at andras@vpmedia.eu.
+ *
+ *=END CLOSED LICENSE
+ */
+-->
+<flex-config xmlns="http://www.adobe.com/2006/flex-config">
+  <default-frame-rate>30</default-frame-rate>
+  <default-background-color>0x000000</default-background-color>
+  <default-size><width>800</width><height>600</height></default-size>
+  <target-player>14.0</target-player>     
+  <swf-version>25</swf-version>
+  <compiler>
+        <define append="true"><name>APP::VERSION</name><value>"0.0.0"</value></define>
+        <define append="true"><name>APP::BUILD</name><value>0</value></define>
+        <define append="true"><name>APP::DEBUG</name><value>true</value></define>
+        <define append="true"><name>VIEWPORT::WIDTH</name><value>800</value></define>
+        <define append="true"><name>VIEWPORT::HEIGHT</name><value>600</value></define> 
+        <define append="true"><name>VIEWPORT::SCALE</name><value>1</value></define>        
+        <define append="true"><name>RUNTIME::AIR</name><value>false</value></define>
+        <define append="true"><name>RUNTIME::FLASH</name><value>true</value></define>
+        <define append="true"><name>PLATFORM::DESKTOP</name><value>false</value></define>
+        <define append="true"><name>PLATFORM::MOBILE</name><value>false</value></define>
+        <define append="true"><name>PLATFORM::WEB</name><value>true</value></define>
+  </compiler>
+    <metadata>
+        <title>AS3 Framework</title>
+        <description>ActionScript Framework</description>
+        <publisher>Andras Csizmadia</publisher>
+        <creator>Andras Csizmadia (andras@vpmedia.eu)</creator>
+        <language>EN</language>
+    </metadata>
+</flex-config>
